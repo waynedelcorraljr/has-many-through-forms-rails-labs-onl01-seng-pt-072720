@@ -3,10 +3,7 @@ class Comment < ActiveRecord::Base
   belongs_to :post
   accepts_nested_attributes_for :user
 
-  def commment_user_attributes=(attributes)
-    attributes.value.each do |attribute|
-      user = User.find_or_create_by(attribute)
-      self.users.build(username: attribute) 
-    end
+  def user_attributes=(user_attributes)
+    self.user = User.find_or_create_by(username: user_attributes[:username]) unless user_attributes[:username].blank?
   end
 end

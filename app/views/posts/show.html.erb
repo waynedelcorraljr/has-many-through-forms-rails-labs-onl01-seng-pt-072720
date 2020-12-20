@@ -26,8 +26,7 @@ Comments:<br>
 <%= form_for @post.comments.build do |f| %>
   <%= f.label "Add Comment:" %>
   <%= f.text_field :content %>
-
-  
+  <br>
   <%= f.collection_select :user_id, User.all, :id, :username, include_blank: 'Select User' %>
 
   <%= f.label " OR Create New User:" %>
